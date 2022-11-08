@@ -61,7 +61,7 @@ body{
 }
 .main{
     display: flex;
-    gap: 10px;
+    gap: 22px;
     margin-top: 32px;
 }
 .time_box{
@@ -70,8 +70,6 @@ body{
     color: #A5B6EE;
     text-align: center;
     position: relative;
-
-    
 }
 .time_box input{
     width: 80px;
@@ -93,15 +91,24 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-/* .time_box::after{
+.min::before{
     content: "";
-    background: url(image\dot.png) no-repeat;
-    background-size: contain;
-    display: inline-block;
+    background: url(../image/dot.png) no-repeat;
     width: 6px;
     height: 26px;
-    z-index: 3;
-}  */
+    position: absolute;
+    top: 50%;
+    left: -15%;
+}  
+ .sec::before{
+    content: "";
+    background: url(../image/dot.png) no-repeat;
+    width: 6px;
+    height: 26px;
+    position: absolute;
+    top: 50%;
+    left: -15%;
+}  
 .dot{
     transform: translateY(45%);
 }
