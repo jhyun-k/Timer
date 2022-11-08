@@ -11,44 +11,35 @@ const startImg = document.querySelector('.startImg')
 const resetImg = document.querySelector('.resetImg')
 
 
-for(i of input){
-    i.addEventListener('click',(e)=>{
-        e.currentTarget.value=''
-    })
-}
-
-/* hrs.addEventListener('input',()=>{
-    startBtn.classList.add('able')
-    startImg.setAttribute('src','image/icon-start.png')
-    resetBtn.classList.add('able')
-    resetImg.setAttribute('src','image/icon-reset.png')
-
-}) */
+/* class 추가 input 초기화 */
 for(i of input){
     i.addEventListener('input',()=>{
         startBtn.classList.add('able')
-    startImg.setAttribute('src','image/icon-start.png')
-    resetBtn.classList.add('able')
-    resetImg.setAttribute('src','image/icon-reset.png')
+        resetBtn.classList.add('able')
     })
+    i.addEventListener('click',(e)=>{
+        e.currentTarget.value=''
+    })
+
 }
 
 
+function timer () {
+    setInterval(() => {
+        sec.value = sec.value-=1
+        console.log(sec.value)
+        if(sec.value<=0){
+            sec.value='00'
+        } 
+    }, 1000);
+    
+}
 
 startBtn.addEventListener('click',()=>{
-    startBtn.classList.remove('able')
-    startBtn.classList.add('click')
-    startBtn.innerHTML=`<img src="image/icon-start.png" alt="" class='startImg'> PAUSE`
-
-    
-/*     setInterval(() => {
-        sec.value = sec.value-=1
-    }, 1000);
-    if(sec.innerText==0){
-        sec.innerText='00'
-    } */
+    startBtn.innerText==='START'?startBtn.innerText='PAUSE':startBtn.innerText='START'
+    startBtn.classList.toggle('click')
+    timer()
 })
-
 
 
 resetBtn.addEventListener('click',()=>{
