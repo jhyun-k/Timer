@@ -162,11 +162,12 @@ input[type="number"]::-webkit-inner-spin-button {
     position: absolute;
     left: 20%;
 }   
-.start.click{
+.btn .pause{
     background-color: #15C2B8;
     color: #fff;
+    position: relative;
 }
-.start.click::before{
+.pause::before{
     content: '';
     background: url(../image/icon-stop.png) no-repeat 0px 0px;
     width: 16px;

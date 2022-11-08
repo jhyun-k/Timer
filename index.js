@@ -5,6 +5,7 @@ const min = main.querySelector('#min');
 const sec = main.querySelector('#sec');
 
 const startBtn = document.querySelector('.start')
+const pauseBtn = document.querySelector('.pause')
 const resetBtn = document.querySelector('.reset')
 
 const startImg = document.querySelector('.startImg')
@@ -24,28 +25,30 @@ for(i of input){
 }
 
 
-function timer () {
-    setInterval(() => {
+function timer (){
+    
+    const interval = setInterval(() => {
         sec.value = sec.value-=1
         console.log(sec.value)
         if(sec.value<=0){
             sec.value='00'
+            clearInterval(interval)
         } 
-    }, 1000);
-    
+    }, 1000)
 }
 
 startBtn.addEventListener('click',()=>{
     startBtn.innerText==='START'?startBtn.innerText='PAUSE':startBtn.innerText='START'
-    startBtn.classList.toggle('click')
+    // startBtn.classList.toggle('click')
     timer()
+
 })
 
 
 resetBtn.addEventListener('click',()=>{
-    hrs.value='00'
-    min.value='00'
-    sec.value='00'
-    startBtn.classList.remove('able')
-    resetBtn.classList.remove('able')
+    hrs.value='00';
+    min.value='00';
+    sec.value='00';
+    startBtn.classList.remove('able');
+    resetBtn.classList.remove('able');
 })
