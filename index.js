@@ -46,4 +46,6 @@ resetBtn.addEventListener('click',()=>{
     hrs.value='00'
     min.value='00'
     sec.value='00'
+    startBtn.classList.remove('able')
+    resetBtn.classList.remove('able')
 })
