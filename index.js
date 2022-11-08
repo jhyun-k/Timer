@@ -39,7 +39,7 @@ function timer (){
 
 startBtn.addEventListener('click',()=>{
     startBtn.innerText==='START'?startBtn.innerText='PAUSE':startBtn.innerText='START'
-    // startBtn.classList.toggle('click')
+    startBtn.classList.toggle('click')
     timer()
 
 })
