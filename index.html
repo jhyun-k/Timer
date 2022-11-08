@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style/style2.css">
+</head>
+<body>
+    <div id='app'>
+        <h1 class='logo'>
+            <img src="image/weniv-logo.png" alt="">
+        </h1>
+        <div class='timer_box'>
+            <h2 class='title'>TIMER</h2>
+            <div class='main'>
+                <div class='time_box'>
+                    <label for="hrs">hrs</label>
+                    <input type="number" id='hrs' value='00'> 
+                </div>
+                <span class='dot'><img src="image/dot.png" alt=""></span>
+                <div class='time_box'>
+                    <label for="min">min</label>
+                    <input type="number" id='min' value='00'>
+                </div>
+                <span class='dot'><img src="image/dot.png" alt=""></span>
+
+                <div class='time_box'>
+                    <label for="sec">sec</label>
+                    <input type="number" id='sec' value='00'>
+                </div>
+            </div>
+            <div class='btn'>
+                <button class='start'><img src="image/icon-start-disabled.png" alt="" class='startImg'> START</button>
+                <button class='reset'><img src="image/icon-reset-disabled.png" alt="" class='resetImg'> RESET</button>
+            </div>
+        </div>
+        <footer class='footer'>
+            ⓒ WENIV Corp.
+        </footer>
+    </div>
+<script src='index.js'>
+    
+</script>
+</body>
+</html>
