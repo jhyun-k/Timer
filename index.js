@@ -1,5 +1,5 @@
 const main = document.querySelector('.main');
-const input= main.querySelectorAll('.time_box input')
+const input = main.querySelectorAll('.time_box input')
 const hrs = main.querySelector('#hrs');
 const min = main.querySelector('#min');
 const sec = main.querySelector('#sec');
@@ -13,7 +13,22 @@ const resetImg = document.querySelector('.resetImg')
 
 let interval
 
-/* 인풋값에 초 넣을때 한자리로 보이는거 어떻게 해결하지? */
+/* 
+버그 해결못한것 목록
+
+*/
+
+/*
+버그 해결 목록 
+- 리셋 버튼 안됨 --> 해결 완
+- 시간에 숫자 2이상 넣으면 분 초 이상해짐 --> 해결완
+- 아무것도 안하고 스타트 누르면 이상함 --> 걍 못누르게함
+- 아무것도 입력 안하면 타이머도 없어짐 --> 해결완  
+- 시간 가고있는 상태랑 pause 상태에서 새 값 어떻게 못넣게 하지? --> 해결완
+- 인풋값에 초 넣을때 한자리로 보이는거 어떻게 해결하지? --> 안해도 된다함
+- 클릭하고 인풋 값 사라지는데... 그러고 다시 시작하면 이상해짐... --> 해결완
+*/
+
 
 /* 버튼 보이기 숨기기 */
 function showBtn(btn){
@@ -27,6 +42,7 @@ function hideBtn(btn){
 for(i of input){
     i.addEventListener('input',()=>{
         startBtn.classList.add('able')
+        startBtn.removeAttribute('disabled')
         resetBtn.classList.add('able')
     })
     i.addEventListener('click',(e)=>{
@@ -42,9 +58,11 @@ function startTimer(totalSeconds){
         totalSeconds--;
         updateInputs(totalSeconds)
         if(totalSeconds<=0){
-             sec.value='00'
             clearInterval(interval)
             alert('지정한 시간이 끝났습니다')
+            hrs.value='00'
+            min.value='00'
+            sec.value='00'
             showBtn(startBtn)
             hideBtn(pauseBtn)
             startBtn.classList.remove('able');
@@ -55,8 +73,8 @@ function startTimer(totalSeconds){
 
 /* input값 업데이트, 한자리수일 경우에는 앞에 0 붙이기 */
 function updateInputs(totalSeconds){
-    const hours = Math.floor(totalSeconds / 60 /60);
-    const minutes = Math.floor(totalSeconds/60)
+    const hours = Math.floor(totalSeconds / 60 / 60);
+    const minutes = Math.floor((totalSeconds/60)%60)
     const seconds = totalSeconds % 60
 
     hrs.value = hours
@@ -77,41 +95,51 @@ function updateInputs(totalSeconds){
 /* 각 버튼에 이벤트 넣기 */
 
 startBtn.addEventListener('click',()=>{
+    input.forEach((el)=>{
+        // el.setAttribute("readonly", "readonly");
+        el.setAttribute("disabled","disabled");
+        if(el.value===''){
+            parseInt(el.value='00')
+        }
+    })
     const hours = parseInt(hrs.value)
     const minutes = parseInt(min.value)
     const seconds = parseInt(sec.value)
 
-    const totalSeconds = (hours * 60 * 60) + (minutes * 60) + seconds
+    const totalSeconds = hours * 60 * 60 + minutes * 60 + seconds
     startTimer(totalSeconds)
     showBtn(pauseBtn)
     hideBtn(startBtn)
 
+    
 })
 
 resetBtn.addEventListener('click',()=>{
     hrs.value='00';
     min.value='00';
     sec.value='00';
+    showBtn(startBtn)
+    hideBtn(pauseBtn)
     startBtn.classList.remove('able');
     resetBtn.classList.remove('able');
+    clearInterval(interval)
+    input.forEach((el)=>{
+        // el.removeAttribute("readonly", "readonly");
+        el.removeAttribute("disabled");
+
+    })
 })
 
 pauseBtn.addEventListener('click',()=>{
     showBtn(startBtn)
     hideBtn(pauseBtn)
-    clearInterval(interval)
+    // input.forEach((el)=>{
+    //     // el.removeAttribute("readonly", "readonly");
+    //     el.removeAttribute("disabled");
+
+    // })
+    clearInterval(interval);
 })
 
 
 
-
-// function timer (){    
-//     const interval = setInterval(() => {
-//         sec.value = sec.value-=1
-//         console.log(sec.value)
-//         if(sec.value<=0){
-//             sec.value='00'
-//             clearInterval(interval)
-//         } 
-//     }, 1000)
-// }
