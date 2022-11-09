@@ -12,6 +12,14 @@ const startImg = document.querySelector('.startImg')
 const resetImg = document.querySelector('.resetImg')
 
 
+/* 버튼 보이기 숨기기 */
+function showBtn(btn){
+    btn.style.display='inline-block'
+}
+
+function hideBtn(btn){
+    btn.style.display='none'
+}
 /* class 추가 input 초기화 */
 for(i of input){
     i.addEventListener('input',()=>{
@@ -25,8 +33,7 @@ for(i of input){
 }
 
 
-function timer (){
-    
+function timer (){    
     const interval = setInterval(() => {
         sec.value = sec.value-=1
         console.log(sec.value)
@@ -38,8 +45,8 @@ function timer (){
 }
 
 startBtn.addEventListener('click',()=>{
-    startBtn.innerText==='START'?startBtn.innerText='PAUSE':startBtn.innerText='START'
-    startBtn.classList.toggle('click')
+    showBtn(pauseBtn)
+    hideBtn(startBtn)
     timer()
 
 })
@@ -51,4 +58,10 @@ resetBtn.addEventListener('click',()=>{
     sec.value='00';
     startBtn.classList.remove('able');
     resetBtn.classList.remove('able');
+})
+
+pauseBtn.addEventListener('click',()=>{
+    showBtn(startBtn)
+    hideBtn(pauseBtn)
+    clearInterval(interval)
 })
