@@ -1,7 +1,5 @@
 # Timer
-Timer 제출 이후 혼자 구현해보기
 
-- 작동영상
 ![chrome_aF5dYDx9Vg](https://github.com/jhyun-k/Timer/assets/105181266/8b3113c9-ca0b-4708-91e4-53c0e679cbd0)
 
 ## 기능명세
